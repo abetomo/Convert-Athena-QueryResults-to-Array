@@ -15,6 +15,11 @@ class ConvertAthenaQueryResultstoArrayTest extends TestCase
                 'expected' => 30
             ],
             [
+                'metadata' => ['Type' => 'double'],
+                'value' => '30.333',
+                'expected' => 30.333
+            ],
+            [
                 'metadata' => ['Type' => 'varchar'],
                 'value' => '30',
                 'expected' => '30'
