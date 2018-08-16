@@ -3,7 +3,7 @@ namespace Abetomo\ConvertAthenaQueryResultstoArray;
 
 class ConvertAthenaQueryResultstoArray
 {
-    public static function cast(array $metadata, string $value)
+    private static function cast(array $metadata, string $value)
     {
         switch ($metadata['Type']) {
             // TODO: Other types
