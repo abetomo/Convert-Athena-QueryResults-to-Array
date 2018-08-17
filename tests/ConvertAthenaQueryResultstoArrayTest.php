@@ -21,12 +21,12 @@ class ConvertAthenaQueryResultstoArrayTest extends TestCase
             ]
         ];
 
+        $reflection = new \ReflectionClass(new ConvertAthenaQueryResultstoArray);
+        $method = $reflection->getMethod('cast');
+        $method->setAccessible(true);
         foreach ($testCase as $test) {
-            $this->assertSame(
-                $test['expected'],
-                ConvertAthenaQueryResultstoArray::cast($test['metadata'], $test['value']),
-                json_encode($test)
-            );
+            $actual = $method->invoke(null, $test['metadata'], $test['value']);
+            $this->assertSame($test['expected'], $actual, json_encode($test));
         }
     }
 
