@@ -8,6 +8,7 @@ class ConvertAthenaQueryResultstoArray
         switch ($metadata['Type']) {
             // TODO: Other types
             case 'integer': return (int) $value;
+            case 'double': return (double) $value;
         }
         return $value;
     }
