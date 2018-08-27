@@ -10,11 +10,12 @@ class ConvertAthenaQueryResultstoArray
      * @param string $value
      * @return mixed
      */
-    public static function cast(array $metadata, string $value)
+    private static function cast(array $metadata, string $value)
     {
         switch ($metadata['Type']) {
             // TODO: Other types
             case 'integer': return (int) $value;
+            case 'double': return (double) $value;
         }
         return $value;
     }
