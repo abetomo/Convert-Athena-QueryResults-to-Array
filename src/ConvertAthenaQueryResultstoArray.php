@@ -3,6 +3,13 @@ namespace Abetomo\ConvertAthenaQueryResultstoArray;
 
 class ConvertAthenaQueryResultstoArray
 {
+    /**
+     * cast
+     *
+     * @param array $metadata
+     * @param string $value
+     * @return mixed
+     */
     private static function cast(array $metadata, string $value)
     {
         switch ($metadata['Type']) {
@@ -13,7 +20,13 @@ class ConvertAthenaQueryResultstoArray
         return $value;
     }
 
-    public static function convert(array $resultSet)
+    /**
+     * convert
+     *
+     * @param array $resultSet
+     * @return array
+     */
+    public static function convert(array $resultSet): array
     {
         $rows = array_slice($resultSet['Rows'], 1);
         $metadata = $resultSet['ResultSetMetadata']['ColumnInfo'];
