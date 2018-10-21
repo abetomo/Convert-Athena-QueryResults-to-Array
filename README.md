@@ -24,8 +24,28 @@ print "\n/// Convert to array \n";
 print_r(ConvertAthenaQueryResultstoArray::convert($getQueryResultsResponse->get('ResultSet')));
 ```
 
+## Example of results
+### Convert to array
 ```
-/// Original value
+Array
+(
+    [0] => Array
+        (
+            [account_id] => id1
+            [count] => 49
+        )
+
+    [1] => Array
+        (
+            [account_id] => id2
+            [count] => 68
+        )
+
+)
+```
+
+### Original value
+```
 Array
 (
     [Rows] => Array
@@ -120,23 +140,6 @@ Array
 
                 )
 
-        )
-
-)
-
-/// Convert to array
-Array
-(
-    [0] => Array
-        (
-            [account_id] => id1
-            [count] => 49
-        )
-
-    [1] => Array
-        (
-            [account_id] => id2
-            [count] => 68
         )
 
 )
