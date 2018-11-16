@@ -112,4 +112,82 @@ class ConvertAthenaQueryResultstoArrayTest extends TestCase
             ConvertAthenaQueryResultstoArray::convert($resultSet)
         );
     }
+
+    public function testConvertWithoutVarCharValue()
+    {
+        $resultSet = [
+            'Rows' => [
+                [
+                    'Data' => [
+                        ['VarCharValue' => 'column_name1'],
+                        ['VarCharValue' => 'column_name2']
+                    ]
+                ],
+                [
+                    'Data' => [
+                        ['VarCharValue' => 'value1'],
+                        ['VarCharValue' => '1']
+                    ]
+                ],
+                [
+                    'Data' => [
+                        ['VarCharValue' => 'value2'],
+                        []
+                    ]
+                ],
+                [
+                    'Data' => [
+                        [],
+                        ['VarCharValue' => '3']
+                    ]
+                ]
+            ],
+            'ResultSetMetadata' => [
+                'ColumnInfo' => [
+                    [
+                        'CatalogName' => 'hive',
+                        'SchemaName' => '',
+                        'TableName' => '',
+                        'Name' => 'column_name1',
+                        'Label' => 'column_name1',
+                        'Type' => 'varchar',
+                        'Precision' => 2147483647,
+                        'Scale' => 0,
+                        'Nullable' => 'UNKNOWN',
+                        'CaseSensitive' => true
+                    ],
+                    [
+                        'CatalogName' => 'hive',
+                        'SchemaName' => '',
+                        'TableName' => '',
+                        'Name' => 'column_name2',
+                        'Label' => 'column_name2',
+                        'Type' => 'integer',
+                        'Precision' => 10,
+                        'Scale' => 0,
+                        'Nullable' => 'UNKNOWN',
+                        'CaseSensitive' => false
+                    ]
+                ]
+            ]
+        ];
+        $expected = [
+            [
+                'column_name1' => 'value1',
+                'column_name2' => 1
+            ],
+            [
+                'column_name1' => 'value2',
+                'column_name2' => 0
+            ],
+            [
+                'column_name1' => '',
+                'column_name2' => 3
+            ]
+        ];
+        $this->assertSame(
+            $expected,
+            ConvertAthenaQueryResultstoArray::convert($resultSet)
+        );
+    }
 }

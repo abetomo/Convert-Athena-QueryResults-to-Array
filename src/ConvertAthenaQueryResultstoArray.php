@@ -35,7 +35,7 @@ class ConvertAthenaQueryResultstoArray
             $hash = [];
             foreach ($row['Data'] as $i => $data) {
                 $columnInfo = $metadata[$i];
-                $hash[$columnInfo['Name']] = self::cast($columnInfo, $data['VarCharValue']);
+                $hash[$columnInfo['Name']] = self::cast($columnInfo, $data['VarCharValue'] ?? '');
             }
             return $hash;
         }, $rows);
