@@ -1,0 +1,21 @@
+name: PHP CI
+
+on: [push]
+
+jobs:
+  test:
+    name: Test on PHP ${{ matrix.php-version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        php-version: ['7.2', '7.3']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@master
+    - uses: shivammathur/setup-php@master
+      with:
+        php-version: ${{ matrix.php-version }}
+    - name: composer install, phptest
+      run: |
+        composer install -n --prefer-dist
+        vendor/bin/phpunit
