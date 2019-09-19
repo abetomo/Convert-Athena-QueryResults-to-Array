@@ -9,13 +9,11 @@ jobs:
     strategy:
       matrix:
         php-version: ['7.2', '7.3']
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     steps:
     - uses: actions/checkout@master
     - uses: shivammathur/setup-php@master
       with:
         php-version: ${{ matrix.php-version }}
-    - name: composer install, phptest
-      run: |
-        composer install -n --prefer-dist
-        vendor/bin/phpunit
+    - run: composer install -n --prefer-dist
+    - run: vendor/bin/phpunit
