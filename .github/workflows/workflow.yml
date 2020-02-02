@@ -1,10 +1,9 @@
 name: PHP CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
-    name: Test on PHP ${{ matrix.php-version }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
