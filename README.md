@@ -1,7 +1,7 @@
 # Convert-Athena-QueryResults-to-Array
 
 [![Latest Stable Version](https://poser.pugx.org/abetomo/convert-athena-query-results-to-array/v/stable)](https://packagist.org/packages/abetomo/convert-athena-query-results-to-array)
-![PHP CI](https://github.com/abetomo/Convert-Athena-QueryResults-to-Array/workflows/PHP%20CI/badge.svg)
+[![Test](https://github.com/abetomo/Convert-Athena-QueryResults-to-Array/actions/workflows/workflow.yml/badge.svg)](https://github.com/abetomo/Convert-Athena-QueryResults-to-Array/actions/workflows/workflow.yml)
 
 Convert AWS Athena QueryResults to Array.
 Since the response of GetQueryResults is complicated, it converts it to a simple array.
