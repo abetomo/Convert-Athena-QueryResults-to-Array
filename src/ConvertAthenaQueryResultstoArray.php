@@ -24,11 +24,13 @@ class ConvertAthenaQueryResultstoArray
      * convert
      *
      * @param array $resultSet
+     * @param bool $isSkipHeader
      * @return array
      */
-    public static function convert(array $resultSet): array
+    public static function convert(array $resultSet, bool $isSkipHeader = false): array
     {
-        $rows = array_slice($resultSet['Rows'], 1);
+        $offset = $isSkipHeader ? 1 : 0;
+        $rows = array_slice($resultSet['Rows'], $offset);
         $metadata = $resultSet['ResultSetMetadata']['ColumnInfo'];
 
         return array_map(function ($row) use ($metadata) {
