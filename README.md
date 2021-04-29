@@ -25,7 +25,10 @@ use Abetomo\ConvertAthenaQueryResultstoArray\ConvertAthenaQueryResultstoArray;
 print "/// Original value\n";
 print_r($getQueryResultsResponse->get('ResultSet'));
 print "\n/// Convert to array \n";
-print_r(ConvertAthenaQueryResultstoArray::convert($getQueryResultsResponse->get('ResultSet')));
+print_r(ConvertAthenaQueryResultstoArray::convert(
+    $getQueryResultsResponse->get('ResultSet'),
+    true // $isSkipHeader
+));
 ```
 
 ## Example of results
